@@ -33,14 +33,19 @@ const Shipping = class Shipping extends Component {
   token = token => {
     console.log("Fetching token");
     console.log(token);
-    axios.post("http://localhost:9000/stripe", token).then(res => {
-      console.log(res);
-      if (res.data === "We did it reddit") {
-        this.props.history.push("/success");
-      } else {
-        alert("An error happened");
-      }
-    });
+    axios
+      .post(
+        "https://brave-stonebraker-889667.netlify.com/.netlify/functions/stripe",
+        token
+      )
+      .then(res => {
+        console.log(res);
+        if (res.data === "We did it reddit") {
+          this.props.history.push("/success");
+        } else {
+          alert("An error happened");
+        }
+      });
     /*
     fetch("http://localhost:3001", {
       method: "POST",
