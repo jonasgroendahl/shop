@@ -1,0 +1,39 @@
+.card-header {
+  height: 200px;
+  background-color: var(--d-blue);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.card-header h1 {
+  font-size: 3.2rem;
+  margin-bottom: 5px;
+}
+
+.card {
+  width: 350px;
+}
+
+.card ul {
+  list-style-type: none;
+  background-color: var(--blue);
+  color: white;
+}
+
+.card ul li {
+  padding: 5px 10px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.card-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #eee;
+  padding: 20px;
+}

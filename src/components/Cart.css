@@ -1,0 +1,31 @@
+@keyframes fade {
+  0% {
+    opacity: 0;
+    transform: translateY(-45px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cart-window {
+  position: absolute;
+  animation: fade 0.2s ease-in;
+  box-shadow: rgb(73, 68, 68) 0.3px 0.3px 1px;
+  z-index: 3;
+}
+
+.cart-body {
+  display: flex;
+  padding: 10px;
+  color: var(--d-blue);
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  min-width: 300px;
+}
+
+.cart-body > * {
+  margin: 5px;
+}

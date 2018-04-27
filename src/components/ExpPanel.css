@@ -1,0 +1,14 @@
+.show-more {
+  font-style: italic;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--blue);
+}
+
+.show-more-list {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-in;
+}

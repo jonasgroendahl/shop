@@ -1,0 +1,12 @@
+.cart-table {
+  width: 100%;
+  border-spacing: 15px;
+}
+
+.cart-table tbody tr td:nth-child(3) {
+  text-align: center;
+}
+
+.cart-table svg {
+  cursor: pointer;
+}

@@ -1,0 +1,31 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 10px 0;
+}
+
+.shipping-grid {
+  display: grid;
+  margin-top: 50px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.shipping-grid h1 {
+  margin-bottom: 10px;
+}
+
+.shipping-grid > * {
+  width: 100%;
+}
+
+.shipping-grid img {
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .shipping-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,14 @@
+.item-list {
+  display: flex;
+}
+
+.bb-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 800px) {
+  .bb-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

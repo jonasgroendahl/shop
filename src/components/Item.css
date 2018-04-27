@@ -1,0 +1,6 @@
+.item {
+  display: flex;
+  padding: 20px;
+  flex-flow: wrap column;
+  justify-content: center;
+}

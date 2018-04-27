@@ -1,0 +1,26 @@
+.cart-overview {
+  margin-top: 10px;
+  margin-left: auto;
+  width: 500px;
+}
+
+.cart-overview-header {
+  height: 200px;
+  background: var(--d-blue);
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+}
+
+.cart-overview-header h1 {
+  margin-left: 30px;
+  font-size: 3rem;
+}
+
+.checkout-page-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
