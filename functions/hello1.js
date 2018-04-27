@@ -65,9 +65,17 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\Jonas\\projects\\wshop\\functions\\hello\\hello.js'");
+"use strict";
+
+
+exports.handler = function (event, context, callback) {
+  callback(null, {
+    statusCode: 200,
+    body: "Hello, World " + process.env.test
+  });
+};
 
 /***/ })
 /******/ ])));
