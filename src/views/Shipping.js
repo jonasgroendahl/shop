@@ -32,10 +32,15 @@ export default class Shipping extends Component {
   token = token => {
     console.log("Fetching token");
     console.log(token);
-    axios.post("http://localhost:3001", token).then(res => {
-      console.log(res.data);
-      console.log("We did it reddit");
-    });
+    axios
+      .post(
+        "https://brave-stonebraker-889667.netlify.com/.netlify/functions/stripe",
+        token
+      )
+      .then(res => {
+        console.log(res.data);
+        console.log("We did it reddit");
+      });
     /*
     fetch("http://localhost:3001", {
       method: "POST",
