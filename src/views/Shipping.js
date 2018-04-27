@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import "./Shipping.css";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
-export default class Shipping extends Component {
+const Shipping = class Shipping extends Component {
   state = {
     name: "",
     streetName: "",
@@ -32,15 +33,14 @@ export default class Shipping extends Component {
   token = token => {
     console.log("Fetching token");
     console.log(token);
-    axios
-      .post(
-        "https://brave-stonebraker-889667.netlify.com/.netlify/functions/stripe",
-        token
-      )
-      .then(res => {
-        console.log(res.data);
-        console.log("We did it reddit");
-      });
+    axios.post("http://localhost:9000/stripe", token).then(res => {
+      console.log(res);
+      if (res.data === "We did it reddit") {
+        this.props.history.push("/success");
+      } else {
+        alert("An error happened");
+      }
+    });
     /*
     fetch("http://localhost:3001", {
       method: "POST",
@@ -100,20 +100,17 @@ export default class Shipping extends Component {
           </form>
           {state.shippingConfirmed ? (
             <div>
-              <h1>Choose payment method</h1>
-              <img
-                src="http://businessdaily.co.zw/public/images/articles/paypal.png"
-                width="250"
-                alt=""
-              />
-              <StripeCheckout
-                token={this.token}
-                stripeKey="pk_test_HL8HTQVsxMUWKw2caiRdwGe3"
-              />
+              <h1>Provide payment details</h1>
               <img
                 src="https://hostiso.com/wp-content/uploads/2016/05/hostiso-stripe.png"
                 width="250"
                 alt=""
+                style={{ marginBottom: "10px" }}
+              />
+              <br />
+              <StripeCheckout
+                token={this.token}
+                stripeKey="pk_test_HL8HTQVsxMUWKw2caiRdwGe3"
               />
             </div>
           ) : null}
@@ -121,4 +118,6 @@ export default class Shipping extends Component {
       </div>
     );
   }
-}
+};
+
+export default withRouter(Shipping);

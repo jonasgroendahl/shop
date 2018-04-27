@@ -20,10 +20,6 @@
   width: 100%;
 }
 
-.shipping-grid img {
-  cursor: pointer;
-}
-
 @media (max-width: 800px) {
   .shipping-grid {
     grid-template-columns: 1fr;
