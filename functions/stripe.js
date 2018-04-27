@@ -1383,6 +1383,8 @@ _Error.StripeIdempotencyError = StripeError.extend({type: 'StripeIdempotencyErro
 const stripe = __webpack_require__(12)(process.env.stripeKey);
 
 exports.handler = function (event, context, callback) {
+  console.log(event);
+  console.log(event.body);
   stripe.charges.create({
     amount: 999,
     currency: "usd",
