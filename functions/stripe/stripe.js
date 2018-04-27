@@ -1,4 +1,4 @@
-const stripe = require("stripe")("sk_test_9Zs7zncExombNFm8lIuHJrBI");
+const stripe = require("stripe")(process.env.stripeKey);
 const cors = require("cors");
 
 exports.handler = function(event, context, callback) {

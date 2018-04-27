@@ -1380,7 +1380,7 @@ _Error.StripeIdempotencyError = StripeError.extend({type: 'StripeIdempotencyErro
 "use strict";
 
 
-const stripe = __webpack_require__(12)("sk_test_9Zs7zncExombNFm8lIuHJrBI");
+const stripe = __webpack_require__(12)(process.env.stripeKey);
 const cors = __webpack_require__(63);
 
 exports.handler = function (event, context, callback) {
