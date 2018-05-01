@@ -8,29 +8,3 @@
 .index-overview > * {
   margin: 10px;
 }
-
-.btn {
-  padding: 10px 15px;
-  background: var(--blue);
-  color: white;
-  border: var(--blue) solid 1px;
-  box-shadow: 1px 1px 1px rgba(63, 60, 60, 0.267);
-  font-size: 1.3rem;
-  font-family: "Karla", sans-serif;
-  cursor: pointer;
-  user-select: none;
-}
-
-.btn:hover {
-  background: var(--d-blue);
-  border: var(--d-blue) solid 1px;
-  outline: none;
-}
-
-.btn:focus {
-  outline: none;
-}
-
-.animate {
-  animation: fadeIn 0.3s ease-in;
-}

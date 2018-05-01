@@ -1,0 +1,11 @@
+h1 {
+  margin: 10px 0;
+}
+
+.success-wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}

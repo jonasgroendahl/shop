@@ -1,10 +1,3 @@
-.input {
-  display: flex;
-  flex-direction: column;
-  max-width: 400px;
-  margin: 10px 0;
-}
-
 .shipping-grid {
   display: grid;
   margin-top: 50px;

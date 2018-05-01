@@ -25,7 +25,7 @@ export default class Cart extends Component {
                   <Link
                     to={context.cart.length === 0 ? "#" : "/shipping"}
                     className={
-                      context.cart.length === 0 ? "btn disabled" : "btn gray"
+                      context.cart.length === 0 ? "btn disabled" : "btn"
                     }
                   >
                     Proceed to shipping

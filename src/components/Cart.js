@@ -5,13 +5,17 @@ import CartList from "./CartList";
 
 export default class Cart extends Component {
   render() {
+    let cartClasses = ["cart-window"];
+    if (this.props.show) {
+      cartClasses = ["cart-window", "cart-window-show "];
+    }
+
     return (
       <div
-        className="cart-window"
+        className={cartClasses.join(" ")}
         style={{
           top: 95,
-          right: 10,
-          display: this.props.show ? "block" : "none"
+          right: 10
         }}
       >
         <div className="cart-body">

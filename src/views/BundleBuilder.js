@@ -44,11 +44,36 @@ export default class BundeBundler extends Component {
         selected: false,
         price: 4,
         disabled: false
+      },
+      {
+        id: 4,
+        name: "Vemcount Device",
+        type: "accessories",
+        description: "I'm a count",
+        selected: false,
+        price: 10,
+        disabled: false
+      },
+      {
+        id: 5,
+        name: "Vemcount Device",
+        type: "kit",
+        description: "I'm a count",
+        selected: false,
+        price: 10,
+        disabled: false
+      },
+      {
+        id: 6,
+        name: "Vemcount Device",
+        type: "install",
+        description: "I'm a count",
+        selected: false,
+        price: 10,
+        disabled: false
       }
     ]
   };
-
-  renderStepActions = step => {};
 
   nextStep = () => {
     const { stepIndex } = this.state;
@@ -64,11 +89,17 @@ export default class BundeBundler extends Component {
     const items = [...this.state.items];
     items.forEach(i => {
       i.disabled = false;
+      // set selected
       if (item.id === i.id) {
         i.selected = !i.selected;
       }
+      // if item (differnet from selected) is of same type and we check the currentcheckbox
       if (i.type === item.type && i.id !== item.id && event.target.checked) {
         i.disabled = true;
+      }
+      // if accessories, don't limit the selection
+      if (i.type === "accessories") {
+        i.disabled = false;
       }
     });
     this.setState({ items: items });
@@ -100,7 +131,14 @@ export default class BundeBundler extends Component {
             <StepLabel onClick={() => this.step(0)}>Select Player</StepLabel>
             <StepContent>
               <div className="item-list">{itemList("player")}</div>
-              <button className="btn" onClick={this.nextStep}>
+              <button
+                className="btn"
+                onClick={this.nextStep}
+                disabled={
+                  items.filter(i => i.type === "player" && i.selected)
+                    .length === 0
+                }
+              >
                 Next step
               </button>
             </StepContent>
@@ -109,7 +147,14 @@ export default class BundeBundler extends Component {
             <StepLabel onClick={() => this.step(1)}>Select Screen</StepLabel>
             <StepContent>
               {itemList("video")}
-              <button className="btn" onClick={this.nextStep}>
+              <button
+                className="btn"
+                onClick={this.nextStep}
+                disabled={
+                  items.filter(i => i.type === "video" && i.selected).length ===
+                  0
+                }
+              >
                 Next step
               </button>
             </StepContent>
@@ -118,13 +163,64 @@ export default class BundeBundler extends Component {
             <StepLabel onClick={() => this.step(2)}>Select Audio</StepLabel>
             <StepContent>
               {itemList("audio")}
+              <button
+                className="btn"
+                onClick={this.nextStep}
+                disabled={
+                  items.filter(i => i.type === "audio" && i.selected).length ===
+                  0
+                }
+              >
+                Next step
+              </button>
+            </StepContent>
+          </Step>
+          <Step>
+            <StepLabel onClick={() => this.step(3)}>
+              Select Automation Kit
+            </StepLabel>
+            <StepContent>
+              {itemList("kit")}
+              <button
+                className="btn"
+                onClick={this.nextStep}
+                disabled={
+                  items.filter(i => i.type === "kit" && i.selected).length === 0
+                }
+              >
+                Next step
+              </button>
+            </StepContent>
+          </Step>
+          <Step>
+            <StepLabel onClick={() => this.step(4)}>Select Install</StepLabel>
+            <StepContent>
+              {itemList("install")}
+              <button
+                className="btn"
+                onClick={this.nextStep}
+                disabled={
+                  items.filter(i => i.type === "install" && i.selected)
+                    .length === 0
+                }
+              >
+                Next step
+              </button>
+            </StepContent>
+          </Step>
+          <Step>
+            <StepLabel onClick={() => this.step(5)}>
+              Select Accessories
+            </StepLabel>
+            <StepContent>
+              {itemList("accessories")}
               <button className="btn" onClick={this.nextStep}>
                 Next step
               </button>
             </StepContent>
           </Step>
           <Step>
-            <StepLabel onClick={() => this.step(3)}>Done</StepLabel>
+            <StepLabel onClick={() => this.step(6)}>Done</StepLabel>
             <StepContent>
               <LoginConsumer>
                 {context => (
@@ -136,7 +232,9 @@ export default class BundeBundler extends Component {
                         items: items.filter(i => i.selected),
                         price: items.reduce(
                           (acc, i) =>
-                            i.selected ? (acc += i.price) : (acc = acc),
+                            i.selected
+                              ? (acc += i.price)
+                              : (acc = acc) /* To be able to do inline reduce function */,
                           0
                         ),
                         amount: 1,
@@ -155,6 +253,7 @@ export default class BundeBundler extends Component {
           </Step>
         </Stepper>
         <div className="pa-5">
+          <h1>List of items</h1>
           {items.filter(i => i.selected).map(i => (
             <li key={i.id + i.name}>
               {i.name} - {i.price}$

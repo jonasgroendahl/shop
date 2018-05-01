@@ -10,9 +10,16 @@
 
 .cart-window {
   position: absolute;
-  animation: fade 0.2s ease-in;
+  transform: translateY(0);
   box-shadow: rgb(73, 68, 68) 0.3px 0.3px 1px;
   z-index: 3;
+  opacity: 0;
+  transition: all 0.3s ease-in;
+}
+
+.cart-window-show {
+  opacity: 1;
+  transform: translateY(-10px);
 }
 
 .cart-body {

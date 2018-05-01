@@ -1,8 +1,9 @@
 import React from "react";
+import axios from "axios";
 
 const login = {
   user: {
-    username: "Jonas",
+    username: "",
     password: "123"
   },
   cart: [],
@@ -37,16 +38,18 @@ export class LoginProvider extends React.Component {
     });
   };
 
-  logIn = () => {
-    this.setState((prev, props) => {
-      console.log("LogIn");
-      const newState = {
-        ...prev
-      };
-      newState.user.username = "Jonas";
-      console.log(newState);
-      return newState;
-    });
+  logIn = async (user, password) => {
+    const response = await axios.get(
+      "https://jsonplaceholder.typicode.com/posts/1"
+    );
+    if (user === "jonas") {
+      const { user } = this.state;
+      user.username = user;
+      this.setState(user);
+      return true;
+    } else {
+      return false;
+    }
   };
 
   addItem = item => {
@@ -117,6 +120,17 @@ export class LoginProvider extends React.Component {
     });
   };
 
+  emptyCart = () => {
+    const { cart } = this.state;
+    cart.splice(0, cart.length);
+    console.log(cart);
+    this.setState({
+      cart: cart,
+      totalAmount: 0,
+      totalPrice: 0
+    });
+  };
+
   render() {
     return (
       <LoginContext.Provider
@@ -130,7 +144,8 @@ export class LoginProvider extends React.Component {
           incrementAmount: this.incrementAmount,
           decrementAmount: this.decrementAmount,
           totalAmount: this.state.totalAmount,
-          totalPrice: this.state.totalPrice
+          totalPrice: this.state.totalPrice,
+          emptyCart: this.emptyCart
         }}
       >
         {this.props.children}

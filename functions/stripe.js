@@ -1384,18 +1384,25 @@ const stripe = __webpack_require__(12)(process.env.stripeKey);
 const cors = __webpack_require__(63);
 
 exports.handler = function (event, context, callback) {
-  console.log("event.body", event);
-  const id = JSON.parse(event.body).id;
-  console.log(id);
-  stripe.charges.create({
-    amount: 999,
-    currency: "usd",
-    description: "Example charge",
-    source: id
-  });
+  if (event.httpMethod != "OPTIONS") {
+    const id = JSON.parse(event.body).id;
+    console.log("CRAZY DAISY", id);
+    stripe.charges.create({
+      amount: 999,
+      currency: "usd",
+      description: "Example charge",
+      source: id
+    });
+  }
   callback(null, {
     statusCode: 200,
-    body: "We did it reddit"
+    body: "We did it reddit",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://localhost:8888",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+      "Access-Control-Allow-Headers": "X-Requested-With,content-type"
+    }
   });
 };
 

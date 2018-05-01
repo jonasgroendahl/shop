@@ -83,6 +83,15 @@
   padding: 20px 0;
 }
 
+.nav-login-dialog {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-flow: column wrap;
+  margin: 0 auto;
+}
+
 @media (max-width: 800px) {
   .cart-link-active {
     transform: none;

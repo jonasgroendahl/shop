@@ -7,6 +7,7 @@ const Item = props => {
       <img
         src="https://whatsnewinfitness.com.au/wp-content/uploads/Wexer-Virtual-Class-Timetable.jpg"
         width="150"
+        alt=""
       />
       <h1>{props.name}</h1>
       <p>{props.description}</p>

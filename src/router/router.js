@@ -6,6 +6,7 @@ import React from "react";
 import Builder from "../views/BundleBuilder";
 import Shipping from "../views/Shipping";
 import Success from "../views/Success";
+import Profile from "../views/Profile";
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
       <Route path="/builder" exact component={Builder} />
       <Route path="/shipping" exact component={Shipping} />
       <Route path="/success" exact component={Success} />
+      <Route path="/profile" exact component={Profile} />
     </Switch>
   );
 };
