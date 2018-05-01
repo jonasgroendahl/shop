@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Signup.css";
 import { Link } from "react-router-dom";
 import EmailIcon from "material-ui/svg-icons/communication/email";
+import video from "../assets/840331843.mp4";
 
 class Signup extends Component {
   state = {
@@ -22,11 +23,7 @@ class Signup extends Component {
     return (
       <div>
         <div className="fs-video">
-          <video
-            src="https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/2215/9/236075858/840331843.mp4?token=1525094972-0x8495f501d45cb77813d7dcbb67c405da3ac7b2a9"
-            autoPlay="true"
-            loop="true"
-          />
+          <video src={video} autoPlay="true" loop="true" />
         </div>
         <div className="signup-box-wrapper">
           <div className="signup-box">
